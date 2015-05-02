@@ -16,6 +16,8 @@
     "batch": "^0.5.1",
     "is": "^2.1.0",
     "lodash.assign": "^3.0.0",
+    "lodash.pick": "^3.1.0",
+    "lodash.values": "^3.0.0",
     "obj-case": "^0.1.1",
     "segmentio-facade": "^2.1.0",
     "segmentio-integration": "^3.2.0",
