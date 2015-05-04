@@ -95,6 +95,13 @@ describe('Google Analytics :: Universal', function(){
       });
     });
 
+    // TODO: More aggressive tests
+    describe('#viewedPromotion', function(){
+      it('should map basic viewedPromotion', function(){
+        test.maps('viewed-promotion-basic', settings);
+      });
+    });
+
     describe('screen', function(){
       it('should map basic screen', function(){
         test.maps('screen-basic', settings);
