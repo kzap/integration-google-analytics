@@ -89,6 +89,20 @@ describe('Google Analytics :: Universal', function(){
     });
 
     // TODO: More aggressive tests
+    describe('#startedOrder', function(){
+      it('should map basic startedOrder', function(){
+        test.maps('started-order-basic', settings);
+      });
+    });
+
+    // TODO: More aggressive tests
+    describe('#updatedOrder', function(){
+      it('should map basic updatedOrder', function(){
+        test.maps('updated-order-basic', settings);
+      });
+    });
+
+    // TODO: More aggressive tests
     describe('#completedCheckoutStep', function(){
       it('should map basic completedCheckoutStep', function(){
         test.maps('completed-checkout-step-basic', settings);
