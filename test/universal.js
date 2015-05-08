@@ -1,9 +1,21 @@
 'use strict';
 
-var Test = require('segmentio-integration-tester');
-var helpers = require('./helpers');
+/**
+ * Module dependencies.
+ */
+
 var GoogleAnalytics = require('..');
-var mapper = require('../lib/mapper');
+var Test = require('segmentio-integration-tester');
+var assert = require('assert');
+var each = require('lodash.forEach');
+var enhancedEcommerceMethods = require('../lib/universal/enhanced-ecommerce');
+var fmt = require('util').format;
+var helpers = require('./helpers');
+var mapper = require('../lib/universal/mapper');
+
+/**
+ * Tests.
+ */
 
 describe('Google Analytics :: Universal', function(){
   var ga;
@@ -85,83 +97,6 @@ describe('Google Analytics :: Universal', function(){
 
       it('should map page with custom dimensions and metrics', function(){
         test.maps('completed-order-cm-cd', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#viewedProduct', function(){
-      it('should map basic viewedProduct', function(){
-        test.maps('viewed-product-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#clickedProduct', function(){
-      it('should map basic clickedProduct', function(){
-        test.maps('clicked-product-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#addedProduct', function(){
-      it('should map basic addedProduct', function(){
-        test.maps('added-product-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#removedProduct', function(){
-      it('should map basic removedProduct', function(){
-        test.maps('removed-product-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#startedOrder', function(){
-      it('should map basic startedOrder', function(){
-        test.maps('started-order-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#updatedOrder', function(){
-      it('should map basic updatedOrder', function(){
-        test.maps('updated-order-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#completedCheckoutStep', function(){
-      it('should map basic completedCheckoutStep', function(){
-        test.maps('completed-checkout-step-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#viewedCheckoutStep', function(){
-      it('should map basic viewedCheckoutStep', function(){
-        test.maps('viewed-checkout-step-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#refundedOrder', function(){
-      it('should map basic refundedOrder', function(){
-        test.maps('refunded-order-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#clickedPromotion', function(){
-      it('should map basic clickedPromotion', function(){
-        test.maps('clicked-promotion-basic', settings);
-      });
-    });
-
-    // TODO: More aggressive tests
-    describe('#viewedPromotion', function(){
-      it('should map basic viewedPromotion', function(){
-        test.maps('viewed-promotion-basic', settings);
       });
     });
 
@@ -276,6 +211,110 @@ describe('Google Analytics :: Universal', function(){
   describe('enhanced ecommerce', function(){
     beforeEach(function(){
       settings.enhancedEcommerce = true;
+      ga = new GoogleAnalytics(settings);
+      test = new Test(ga.universal, __dirname);
+      test.mapper(mapper);
+    });
+
+    it('should not have EE methods when EE is not enabled', function(){
+      settings.enhancedEcommerce = false;
+      ga = new GoogleAnalytics(settings);
+      test = new Test(ga.universal, __dirname);
+
+      each(enhancedEcommerceMethods, function(method, name){
+        assert(
+          ga.universal[name] !== method,
+          fmt('GA should not have enhanced ecommerce method %s when settings.enhancedEcommerce is `false`', name)
+        );
+      });
+    });
+
+    it('should have EE methods when EE is not enabled', function(){
+      each(enhancedEcommerceMethods, function(method, name){
+        assert(
+          ga.universal[name] === method,
+          fmt('GA should have enhanced ecommerce method %s when settings.enhancedEcommerce is `true`', name)
+        );
+      });
+    });
+
+    describe('mapper', function(){
+      // TODO: More aggressive tests
+      describe('#viewedProduct', function(){
+        it('should map basic viewedProduct', function(){
+          test.maps('viewed-product-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#clickedProduct', function(){
+        it('should map basic clickedProduct', function(){
+          test.maps('clicked-product-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#addedProduct', function(){
+        it('should map basic addedProduct', function(){
+          test.maps('added-product-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#removedProduct', function(){
+        it('should map basic removedProduct', function(){
+          test.maps('removed-product-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#startedOrder', function(){
+        it('should map basic startedOrder', function(){
+          test.maps('started-order-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#updatedOrder', function(){
+        it('should map basic updatedOrder', function(){
+          test.maps('updated-order-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#completedCheckoutStep', function(){
+        it('should map basic completedCheckoutStep', function(){
+          test.maps('completed-checkout-step-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#viewedCheckoutStep', function(){
+        it('should map basic viewedCheckoutStep', function(){
+          test.maps('viewed-checkout-step-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#refundedOrder', function(){
+        it('should map basic refundedOrder', function(){
+          test.maps('refunded-order-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#clickedPromotion', function(){
+        it('should map basic clickedPromotion', function(){
+          test.maps('clicked-promotion-basic', settings);
+        });
+      });
+
+      // TODO: More aggressive tests
+      describe('#viewedPromotion', function(){
+        it('should map basic viewedPromotion', function(){
+          test.maps('viewed-promotion-basic', settings);
+        });
+      });
     });
 
     describe('#viewedProduct', function(){

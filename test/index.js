@@ -2,7 +2,6 @@
 
 var Test = require('segmentio-integration-tester');
 var GoogleAnalytics = require('..');
-var mapper = require('../lib/mapper');
 
 describe('Google Analytics', function(){
   var ga;
@@ -17,7 +16,6 @@ describe('Google Analytics', function(){
     };
     ga = new GoogleAnalytics(settings);
     test = new Test(ga, __dirname);
-    test.mapper(mapper);
   });
 
   it('should have the correct settings', function(){

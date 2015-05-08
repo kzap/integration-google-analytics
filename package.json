@@ -28,6 +28,7 @@
   "devDependencies": {
     "istanbul": "0.x",
     "jscs": "1.x",
+    "lodash.foreach": "^3.0.3",
     "merge-util": "^0.1.0",
     "mocha": "2.x",
     "ms": "0.x",
