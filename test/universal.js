@@ -272,4 +272,131 @@ describe('Google Analytics :: Universal', function(){
 
     // TODO: cm, cd tests once we have multi request tests.
   });
+
+  describe('enhanced ecommerce', function(){
+    beforeEach(function(){
+      settings.enhancedEcommerce = true;
+    });
+
+    describe('#viewedProduct', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('viewed-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#clickedProduct', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('clicked-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#addedProduct', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('added-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#removedProduct', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('removed-product-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#startedOrder', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('started-order-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#updatedOrder', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('updated-order-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#completedCheckoutStep', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('completed-checkout-step-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#viewedCheckoutStep', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('viewed-checkout-step-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#refundedOrder', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('refunded-order-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#clickedPromotion', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('clicked-promotion-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+
+    describe('#viewedPromotion', function(){
+      it('should get a 200 from the API', function(done){
+        var json = test.fixture('viewed-promotion-basic');
+        test
+          .set(settings)
+          .track(json.input)
+          .sends(json.output)
+          .expects(200, done);
+      });
+    });
+  });
 });
