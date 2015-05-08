@@ -89,6 +89,13 @@ describe('Google Analytics :: Universal', function(){
     });
 
     // TODO: More aggressive tests
+    describe('#clickedProduct', function(){
+      it('should map basic clickedProduct', function(){
+        test.maps('clicked-product-basic', settings);
+      });
+    });
+
+    // TODO: More aggressive tests
     describe('#addedProduct', function(){
       it('should map basic addedProduct', function(){
         test.maps('added-product-basic', settings);
