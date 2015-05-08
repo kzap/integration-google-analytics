@@ -89,6 +89,13 @@ describe('Google Analytics :: Universal', function(){
     });
 
     // TODO: More aggressive tests
+    describe('#viewedCheckoutStep', function(){
+      it('should map basic viewedCheckoutStep', function(){
+        test.maps('viewed-checkout-step-basic', settings);
+      });
+    });
+
+    // TODO: More aggressive tests
     describe('#refundedOrder', function(){
       it('should map basic refundedOrder', function(){
         test.maps('refunded-order-basic', settings);
