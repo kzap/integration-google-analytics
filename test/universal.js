@@ -434,7 +434,10 @@ describe('Google Analytics :: Universal', function(){
           .set(settings)
           .track(json.input)
           .sends(json.output)
-          .expects(200, done);
+          .expects(200, function(err, res) {
+            console.log(res[0].body);
+            done();
+          });
       });
     });
   });
