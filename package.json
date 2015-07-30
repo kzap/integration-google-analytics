@@ -26,6 +26,8 @@
     "unix-time": "^1.0.1"
   },
   "devDependencies": {
+    "eslint": "0.x",
+    "eslint-config-segment": "^1.0.17",
     "istanbul": "0.x",
     "jscs": "1.x",
     "lodash.foreach": "^3.0.3",

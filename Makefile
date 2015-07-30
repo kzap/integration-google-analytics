@@ -1,12 +1,16 @@
 
 TESTS = $(wildcard test/*.js)
 SRC = $(wildcard lib/*.js)
-GREP ?=.
+GREP ?= .
+ESLINT = node_modules/.bin/eslint
 
 default: node_modules test-style test-cov
 
 node_modules: package.json
-	@npm install 
+	@npm install
+
+lint: node_modules
+	@$(ESLINT) $(SRC) $(TESTS)
 
 test:
 	@TZ=UTC ./node_modules/.bin/mocha $(TESTS) \
