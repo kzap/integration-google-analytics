@@ -88,6 +88,24 @@ describe('Google Analytics :: Universal', function(){
       });
     });
 
+    describe('refunded-order', function(){
+      it('should map basic refunded-order', function(){
+        test.maps('refunded-order-basic', settings);
+      });
+
+      it('should map context.app', function(){
+        test.maps('refunded-order-app', settings);
+      });
+
+      it('should map context.screen', function(){
+        test.maps('page-screen', settings);
+      });
+
+      it('should map page with custom dimensions and metrics', function(){
+        test.maps('refunded-order-cm-cd', settings);
+      });
+    });
+
     describe('screen', function(){
       it('should map basic screen', function(){
         test.maps('screen-basic', settings);
@@ -189,6 +207,16 @@ describe('Google Analytics :: Universal', function(){
   describe('.completedOrder()', function(){
     it('should send ecommerce data', function(done){
       var track = helpers.transaction();
+      // TODO: fixture
+      ga.track(track, done);
+    });
+
+    // TODO: cm, cd tests once we have multi request tests.
+  });
+
+  describe('.refunded()', function(){
+    it('should send ecommerce data', function(done){
+      var track = helpers.refundedTransaction();
       // TODO: fixture
       ga.track(track, done);
     });
