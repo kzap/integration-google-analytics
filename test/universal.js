@@ -214,7 +214,7 @@ describe('Google Analytics :: Universal', function(){
     // TODO: cm, cd tests once we have multi request tests.
   });
 
-  describe('.refunded()', function(){
+  describe('.refundedOrder()', function(){
     it('should send ecommerce data', function(done){
       var track = helpers.refundedTransaction();
       // TODO: fixture
